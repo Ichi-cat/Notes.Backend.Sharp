@@ -2,6 +2,7 @@
 using Notes.Application.Interfaces;
 using Notes.Domain;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,14 +18,18 @@ namespace Notes.Application.Notes.Commands.CreateNote
         }
         public async Task<Guid> Handle(CreateNoteCommand request, CancellationToken cancellationToken)
         {
+            if(request.CategoryId == null || 
+                !_context.Categories.Any(x => x.Id == request.CategoryId)) request.CategoryId = null;//add default category
+            //проверка на существование категории
             var note = new Note {
+                UserId = request.UserId,
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Text = request.Text,
-                Category = request.Category
+                CategoryId = request.CategoryId
             };
-            var result = await _context.Notes.AddAsync(note);
-            var res = await _context.SaveChangesAsync(cancellationToken);
+            await _context.Notes.AddAsync(note);
+            await _context.SaveChangesAsync(cancellationToken);
             return note.Id;
         }
     }

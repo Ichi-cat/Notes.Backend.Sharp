@@ -1,13 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Notes.Persistence;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Notes.Api
 {
@@ -19,12 +14,12 @@ namespace Notes.Api
             using(var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                try
-                {
                     var context = services.GetRequiredService<NotesDbContext>();
                     DbInitializer.Initialize(context);
+                try
+                {
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) { throw ex; }
             }
             host.Run();
         }

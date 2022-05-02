@@ -6,8 +6,9 @@ namespace Notes.Application.Notes.Commands.CreateNote
 {
     public class CreateNoteCommand : IRequest<Guid>
     {
+        public Guid UserId { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
-        public Category Category { get; set; }
+        public Guid? CategoryId { get; set; }
     }
 }

@@ -7,6 +7,14 @@ namespace Notes.Persistence
     {
         public static void Initialize(NotesDbContext context)
         {
+            CreateBaseMatrices(context);
+            CreateBaseProgressConditions(context);
+            //context.Database.EnsureDeleted();
+            //context.Database.Migrate();
+            //context.Database.EnsureCreated();
+        }
+        private static void CreateBaseMatrices(NotesDbContext context)
+        {
             if (!context.Matrices.Any())
             {
                 var IU = new Matrix { Id = MatricesEnum.ImportantUrgent, Name = "ImportantUrgent" };
@@ -16,9 +24,17 @@ namespace Notes.Persistence
                 context.Matrices.AddRange(IU, INU, NIU, NINU);
                 context.SaveChanges();
             }
-            //context.Database.EnsureDeleted();
-            //context.Database.Migrate();
-            //context.Database.EnsureCreated();
+        }
+        private static void CreateBaseProgressConditions(NotesDbContext context)
+        {
+            if (!context.ProgressConditions.Any())
+            {
+                var planned = new ProgressCondition { Id = ProgressConditionEnum.Planned, Name = "Planned" };
+                var during = new ProgressCondition { Id = ProgressConditionEnum.During, Name = "During" };
+                var ready = new ProgressCondition { Id = ProgressConditionEnum.Ready, Name = "Ready" };
+                context.ProgressConditions.AddRange(planned, during, ready);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Notes.Application.Matrices.Queries.GetMatrixList
 {
     public class MatrixDto : IMapWith<Matrix>
     {
-        public int Id { get; set; }
+        public MatricesEnum Id { get; set; }
         public string Name { get; set; }
 
         public void Mapping(Profile profile)

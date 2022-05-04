@@ -18,8 +18,8 @@ namespace Notes.Application.Notes.Commands.CreateNote
         }
         public async Task<Guid> Handle(CreateNoteCommand request, CancellationToken cancellationToken)
         {
-            if(request.CategoryId == null || 
-                !_context.Categories.Any(x => x.Id == request.CategoryId)) request.CategoryId = null;//add default category
+            if (request.CategoryId == null || 
+                !_context.Categories.Any(x => x.Id == request.CategoryId && x.UserId == request.UserId)) request.CategoryId = null;//add default category
             //проверка на существование категории
             var note = new Note {
                 UserId = request.UserId,

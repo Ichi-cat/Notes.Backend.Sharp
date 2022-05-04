@@ -12,7 +12,7 @@ namespace Notes.Domain
         public DateTime? Date { get; set; }
         public Matrix Matrix { get; set; }
         public ProgressCondition ProgressCondition { get; set; }
-        public int? MatrixId { get; set; }
-        public int? ProgressConditionId { get; set; }
+        public MatricesEnum? MatrixId { get; set; }
+        public ProgressConditionEnum? ProgressConditionId { get; set; }
     }
 }

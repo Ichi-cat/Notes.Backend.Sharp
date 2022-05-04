@@ -12,8 +12,8 @@ namespace Notes.Application.NoteTasks.Queries.GetNoteTaskDetails
         public string Text { get; set; }
         public int? Seconds { get; set; }
         public DateTime? Date { get; set; }
-        public int? MatrixId { get; set; }
-        public int? ProgressConditionId { get; set; }
+        public MatricesEnum? MatrixId { get; set; }
+        public ProgressConditionEnum? ProgressConditionId { get; set; }
 
         public void Mapping(Profile profile)
         {

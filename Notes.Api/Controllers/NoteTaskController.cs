@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Notes.Api.Models.NoteTask;
 using Notes.Application.NoteTasks.Commands.CreateNoteTask;
 using Notes.Application.NoteTasks.Commands.DeleteNoteTask;
@@ -16,8 +17,10 @@ namespace Notes.Api.Controllers
 {
     public class NoteTaskController : BaseController
     {
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet]
-        public async Task<ActionResult<NoteTaskListDto>> Get()
+        public async Task<ActionResult<NoteTaskListDto>> GetNoteTasks()
         {
             var query = new GetNoteTaskListQuery
             {
@@ -26,8 +29,10 @@ namespace Notes.Api.Controllers
             var tasks = await Mediator.Send(query);
             return Ok(tasks);
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("{id}")]
-        public async Task<ActionResult<NoteTaskDetailsDto>> Get(Guid id)
+        public async Task<ActionResult<NoteTaskDetailsDto>> GetNoteTaskById(Guid id)
         {
             var query = new GetNoteTaskDetailsQuery
             {
@@ -37,8 +42,10 @@ namespace Notes.Api.Controllers
             var taskDetails = await Mediator.Send(query);
             return Ok(taskDetails);
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("bymatrix/{id}")]
-        public async Task<ActionResult<NoteTaskListDto>> GetByMatrix(MatricesEnum id)
+        public async Task<ActionResult<NoteTaskListDto>> GetNoteTaskByMatrix(MatricesEnum id)
         {
             var query = new GetNoteTaskListByMatrixQuery
             {
@@ -49,8 +56,10 @@ namespace Notes.Api.Controllers
             return Ok(tasks);
 
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("byprogresscondition/{id}")]
-        public async Task<ActionResult<NoteTaskListDto>> GetByProgressCondition(ProgressConditionEnum id)
+        public async Task<ActionResult<NoteTaskListDto>> GetNoteTaskByProgressCondition(ProgressConditionEnum id)
         {
             var query = new GetNoteTaskListByProgressConditionQuery
             {
@@ -61,24 +70,30 @@ namespace Notes.Api.Controllers
             return Ok(tasks);
 
         }
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPost]
-        public async Task<ActionResult<Guid>> Create(CreateNoteTaskVm model)
+        public async Task<ActionResult<Guid>> CreateNoteTask(CreateNoteTaskVm model)
         {
             var command = Mapper.Map<CreateNoteTaskCommand>(model);
             command.UserId = UserId;
             var id = await Mediator.Send(command);
             return Created("", id);
         }
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPut]
-        public async Task<ActionResult> Update(UpdateNoteTaskVm model)
+        public async Task<ActionResult> UpdateNoteTask(UpdateNoteTaskVm model)
         {
             var command = Mapper.Map<UpdateNoteTaskCommand>(model);
             command.UserId = UserId;
             await Mediator.Send(command);
             return NoContent();
         }
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<ActionResult> DeleteNoteTask(Guid id)
         {
             var command = new DeleteNoteTaskCommand
             {

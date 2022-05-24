@@ -19,7 +19,7 @@ namespace Notes.Api
                 try
                 {
                 }
-                catch (Exception ex) { throw ex; }
+                catch (Exception ex) {  }
             }
             host.Run();
         }

@@ -18,6 +18,7 @@ using System.IO;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Notes.Api.Middlewares;
 
 namespace Notes.Api
 {
@@ -92,6 +93,7 @@ namespace Notes.Api
                     config.RoutePrefix = string.Empty;
                 }
             });
+            app.UseCustomExceptionHandler();
             app.UseRouting();
             app.UseCors("AllowAll");
             app.UseAuthentication();

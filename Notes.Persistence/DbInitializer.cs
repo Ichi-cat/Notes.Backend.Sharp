@@ -9,9 +9,6 @@ namespace Notes.Persistence
         {
             CreateBaseMatrices(context);
             CreateBaseProgressConditions(context);
-            //context.Database.EnsureDeleted();
-            //context.Database.Migrate();
-            //context.Database.EnsureCreated();
         }
         private static void CreateBaseMatrices(NotesDbContext context)
         {

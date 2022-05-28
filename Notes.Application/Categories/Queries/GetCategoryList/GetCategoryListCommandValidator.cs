@@ -7,7 +7,7 @@ namespace Notes.Application.Categories.Queries.GetCategoryList
     {
         public GetCategoryListCommandValidator()
         {
-            //RuleFor(getCategoryListCommand => getCategoryListCommand.UserId).NotEqual(Guid.Empty);
+            RuleFor(getCategoryListCommand => getCategoryListCommand.UserId).NotEqual(Guid.Empty);
         }
     }
 }

@@ -7,8 +7,8 @@ namespace Notes.Application.NoteTasks.Queries.GetNoteTaskListByProgressCondition
     {
         public GetNoteTaskListByProgressConditionQueryValidator()
         {
-            //RuleFor(getNoteTaskListByProgressConditionQuery => getNoteTaskListByProgressConditionQuery.UserId).NotEqual(Guid.Empty);
-            //RuleFor(getNoteTaskListByProgressConditionQuery => getNoteTaskListByProgressConditionQuery.ProgressConditionId);
+            RuleFor(getNoteTaskListByProgressConditionQuery => getNoteTaskListByProgressConditionQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteTaskListByProgressConditionQuery => getNoteTaskListByProgressConditionQuery.ProgressConditionId).IsInEnum();
         }
     }
 }

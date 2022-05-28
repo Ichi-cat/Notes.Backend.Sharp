@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Notes.Application.Common.Exceptions;
 using Notes.Application.Interfaces;
+using Notes.Domain;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace Notes.Application.Categories.Commands.UpdateCategory
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == request.Id);
             if (category == null || category.UserId != request.UserId)
-                throw new NotFoundException();
+                throw new NotFoundException(nameof(Category), request.Id);
             category.Name = request.Name;
             await _context.SaveChangesAsync();
             return Unit.Value;

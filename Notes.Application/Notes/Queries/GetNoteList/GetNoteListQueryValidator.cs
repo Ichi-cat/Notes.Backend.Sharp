@@ -6,7 +6,7 @@ namespace Notes.Application.Notes.Queries.GetNoteList
     {
         public GetNoteListQueryValidator()
         {
-            //RuleFor(getNoteListQuery => getNoteListQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteListQuery => getNoteListQuery.UserId).NotEqual(Guid.Empty);
         }
     }
 }

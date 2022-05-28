@@ -7,7 +7,7 @@ namespace Notes.Application.NoteTasks.Queries.GetNoteTaskList
     {
         public GetNoteTaskListQueryValidator()
         {
-            //RuleFor(getNoteTaskListQuery => getNoteTaskListQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteTaskListQuery => getNoteTaskListQuery.UserId).NotEqual(Guid.Empty);
         }
     }
 }

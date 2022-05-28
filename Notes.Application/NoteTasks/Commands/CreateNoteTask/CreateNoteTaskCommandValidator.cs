@@ -7,7 +7,7 @@ namespace Notes.Application.NoteTasks.Commands.CreateNoteTask
     {
         public CreateNoteTaskCommandValidator()
         {
-            //RuleFor(createNoteTaskCommand => createNoteTaskCommand.UserId).NotEqual(Guid.Empty);
+            RuleFor(createNoteTaskCommand => createNoteTaskCommand.UserId).NotEqual(Guid.Empty);
             RuleFor(createNoteTaskCommand => createNoteTaskCommand.Name).NotEmpty().MaximumLength(250);
             RuleFor(createNoteTaskCommand => createNoteTaskCommand.Seconds).LessThan(2147483647);
             RuleFor(createNoteTaskCommand => createNoteTaskCommand.DateTime).Must(DateTimeIsValid).WithMessage("Date has to be in the future");

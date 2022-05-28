@@ -7,7 +7,7 @@ namespace Notes.Application.Categories.Commands.CreateCategory
     {
         public CreateCategoryCommandValidator()
         {
-            //RuleFor(createCategoryCommand => createCategoryCommand.UserId).NotEqual(Guid.Empty);
+            RuleFor(createCategoryCommand => createCategoryCommand.UserId).NotEqual(Guid.Empty);
             RuleFor(createCategoryCommand => createCategoryCommand.Name).NotEmpty().MaximumLength(250);
         }
     }

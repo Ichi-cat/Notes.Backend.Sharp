@@ -7,7 +7,7 @@ namespace Notes.Application.Notes.Queries.GetNoteListByCategory
     {
         public GetNoteListByCategoryQueryValidator()
         {
-            //RuleFor(getNoteListByCategoryQuery => getNoteListByCategoryQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteListByCategoryQuery => getNoteListByCategoryQuery.UserId).NotEqual(Guid.Empty);
             RuleFor(getNoteListByCategoryQuery => getNoteListByCategoryQuery.CategoryId).NotEqual(Guid.Empty);
         }
     }

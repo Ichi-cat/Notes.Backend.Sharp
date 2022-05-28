@@ -24,7 +24,6 @@ namespace Notes.Application.Notes.Queries.GetNoteList
             var notes = await _context.Notes.Where(x => x.UserId == request.UserId)
                 .ProjectTo<NoteDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
-            //проверки
             return new NoteListDto { Notes = notes };
         }
     }

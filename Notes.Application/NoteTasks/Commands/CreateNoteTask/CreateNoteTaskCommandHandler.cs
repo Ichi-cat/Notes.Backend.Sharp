@@ -19,6 +19,7 @@ namespace Notes.Application.NoteTasks.Commands.CreateNoteTask
         {
             var noteTask = new NoteTask
             {
+                UserId = request.UserId,
                 Id = Guid.NewGuid(),
                 Name = request.Name,
                 Text = request.Text,

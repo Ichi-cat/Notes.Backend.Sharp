@@ -7,7 +7,7 @@ namespace Notes.Application.Categories.Commands.UpdateCategory
     {
         public UpdateCategoryCommandValidator()
         {
-            RuleFor(updateCategoryCommand => updateCategoryCommand.UserId).NotEqual(Guid.Empty);
+            //RuleFor(updateCategoryCommand => updateCategoryCommand.UserId).NotEqual(Guid.Empty);
             RuleFor(updateCategoryCommand => updateCategoryCommand.Id).NotEqual(Guid.Empty);
             RuleFor(updateCategoryCommand => updateCategoryCommand.Name).NotEmpty().MaximumLength(250);
         }

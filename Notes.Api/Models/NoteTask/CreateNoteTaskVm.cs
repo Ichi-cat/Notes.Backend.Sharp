@@ -17,7 +17,8 @@ namespace Notes.Api.Models.NoteTask
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<CreateNoteTaskVm, CreateNoteTaskCommand>();
+            profile.CreateMap<CreateNoteTaskVm, CreateNoteTaskCommand>().
+                ForMember(destination => destination.DateTime, opt => opt.MapFrom(source => source.Date));
         }
     }
 }

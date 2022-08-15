@@ -40,6 +40,7 @@ namespace Notes.Api.Controllers
                 Id = id
             };
             var taskDetails = await Mediator.Send(query);
+            //taskDetails.Date = DateTime.SpecifyKind(taskDetails.Date.Value, DateTimeKind.Utc);
             return Ok(taskDetails);
         }
         [ProducesResponseType(StatusCodes.Status200OK)]

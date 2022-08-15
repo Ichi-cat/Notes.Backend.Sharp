@@ -11,7 +11,6 @@ namespace Notes.Api.Controllers
     [ApiController]
     [Route("[controller]/")]
     [Produces("application/json")]
-    //[Authorize]
     public abstract class BaseController : ControllerBase
     {
         protected Guid UserId => User.Identity.IsAuthenticated ? Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value) 

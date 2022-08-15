@@ -12,7 +12,7 @@ namespace Notes.Application.Notes.Commands.CreateNote
         public CreateNoteCommandValidator()
         {
             RuleFor(c => c.Name).NotEmpty().MaximumLength(250);
-            RuleFor(c => c.UserId).NotEqual(Guid.Empty);
+            //RuleFor(c => c.UserId).NotEqual(Guid.Empty);
         }
     }
 }

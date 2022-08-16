@@ -50,7 +50,7 @@ namespace Notes.Api
                     options.Audience = "NotesWebApi";
                     options.RequireHttpsMetadata = false;
                 });
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
 
             services.AddCors(options =>
             {

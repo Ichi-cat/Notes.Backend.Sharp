@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Notes.Api.Models.NoteTask;
 using Notes.Application.NoteTasks.Commands.CreateNoteTask;
 using Notes.Application.NoteTasks.Commands.DeleteNoteTask;
 using Notes.Application.NoteTasks.Commands.UpdateNoteTask;
+using Notes.Application.NoteTasks.Commands.UpdateNoteTaskPatch;
 using Notes.Application.NoteTasks.Queries;
 using Notes.Application.NoteTasks.Queries.GetNoteTaskDetails;
 using Notes.Application.NoteTasks.Queries.GetNoteTaskList;
@@ -91,6 +93,22 @@ namespace Notes.Api.Controllers
             await Mediator.Send(command);
             return NoContent();
         }
+
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> UpdateNoteTaskPatch(JsonPatchDocument<NoteTask> model, Guid id)
+        {
+            var command = new UpdateNoteTaskPatchCommand
+            {
+                Id = id,
+                UserId = UserId,
+                Model = model
+            };
+            await Mediator.Send(command);
+            return NoContent();
+        }
+
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpDelete("{id}")]

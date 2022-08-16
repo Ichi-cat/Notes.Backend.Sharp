@@ -3,9 +3,9 @@ using System;
 
 namespace Notes.Application.NoteTasks.Commands.UpdateNoteTask
 {
-    public class UpdateNoteTaskCommandValidator : AbstractValidator<UpdateNoteTaskCommand>
+    public class UpdateNoteTaskPatchCommandValidator : AbstractValidator<UpdateNoteTaskCommand>
     {
-        public UpdateNoteTaskCommandValidator()
+        public UpdateNoteTaskPatchCommandValidator()
         {
             RuleFor(updateNoteTaskCommand => updateNoteTaskCommand.Id).NotEqual(Guid.Empty);
             RuleFor(updateNoteTaskCommand => updateNoteTaskCommand.Name).NotEmpty().MaximumLength(250);

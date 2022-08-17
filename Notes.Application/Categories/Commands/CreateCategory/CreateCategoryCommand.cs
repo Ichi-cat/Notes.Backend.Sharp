@@ -7,5 +7,6 @@ namespace Notes.Application.Categories.Commands.CreateCategory
     {
         public Guid UserId { get; set; }
         public string Name { get; set; }
+        public string Color { get; set; }
     }
 }

@@ -7,6 +7,7 @@ namespace Notes.Api.Models.Category
     public class CreateCategoryVm : IMapWith<CreateCategoryCommand>
     {
         public string Name { get; set; }
+        public string Color { get; set; }
 
         public void Mapping(Profile profile)
         {

@@ -22,6 +22,7 @@ namespace Notes.Application.Categories.Commands.UpdateCategory
             if (category == null || category.UserId != request.UserId)
                 throw new NotFoundException(nameof(Category), request.Id);
             category.Name = request.Name;
+            category.Color = request.Color;
             await _context.SaveChangesAsync();
             return Unit.Value;
         }

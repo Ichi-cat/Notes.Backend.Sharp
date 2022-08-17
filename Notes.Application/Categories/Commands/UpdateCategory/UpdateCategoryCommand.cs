@@ -8,5 +8,6 @@ namespace Notes.Application.Categories.Commands.UpdateCategory
         public Guid UserId { get; set; }
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string Color { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace Notes.Application.Categories.Queries.GetCategoryList
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public string Color { get; set; }
 
         public void Mapping(Profile profile)
         {

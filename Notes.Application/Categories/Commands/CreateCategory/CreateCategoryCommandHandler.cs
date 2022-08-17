@@ -21,6 +21,7 @@ namespace Notes.Application.Categories.Commands.CreateCategory
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
+                Color = request.Color,
                 UserId = request.UserId
             };
             await _context.Categories.AddAsync(category);

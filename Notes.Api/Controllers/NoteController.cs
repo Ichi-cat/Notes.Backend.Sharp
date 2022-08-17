@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Notes.Api.Models.Note;
 using Notes.Application.Notes.Commands.CreateNote;
 using Notes.Application.Notes.Commands.DeleteNote;
 using Notes.Application.Notes.Commands.UpdateNote;
+using Notes.Application.Notes.Commands.UpdateNotePatch;
 using Notes.Application.Notes.Queries;
 using Notes.Application.Notes.Queries.GetNoteDetails;
 using Notes.Application.Notes.Queries.GetNoteList;
 using Notes.Application.Notes.Queries.GetNoteListByCategory;
+using Notes.Domain;
 using System;
 using System.Threading.Tasks;
 
@@ -96,6 +99,20 @@ namespace Notes.Api.Controllers
             var command = Mapper.Map<UpdateNoteCommand>(model);
             command.UserId = UserId;
             var id = await Mediator.Send(command);
+            return NoContent();
+        }
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> UpdateNoteTaskPatch(JsonPatchDocument<Note> model, Guid id)
+        {
+            var command = new UpdateNotePatchCommand
+            {
+                Id = id,
+                UserId = UserId,
+                Model = model
+            };
+            await Mediator.Send(command);
             return NoContent();
         }
         [ProducesResponseType(StatusCodes.Status204NoContent)]

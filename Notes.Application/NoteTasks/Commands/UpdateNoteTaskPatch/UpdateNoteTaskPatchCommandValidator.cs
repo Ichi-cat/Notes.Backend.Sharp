@@ -8,6 +8,7 @@ namespace Notes.Application.NoteTasks.Commands.UpdateNoteTaskPatch
         public UpdateNoteTaskPatchCommandValidator()
         {
             RuleFor(updateNoteTaskCommand => updateNoteTaskCommand.Id).NotEqual(Guid.Empty);
+            RuleFor(updateNoteTaskCommand => updateNoteTaskCommand.UserId).NotEqual(Guid.Empty);
         }
         private bool DateTimeIsValid(DateTime? dateTime)
         {

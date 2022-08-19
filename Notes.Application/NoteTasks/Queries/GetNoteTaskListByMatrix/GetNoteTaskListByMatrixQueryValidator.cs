@@ -7,7 +7,7 @@ namespace Notes.Application.NoteTasks.Queries.GetNoteTaskListByMatrix
     {
         public GetNoteTaskListByMatrixQueryValidator()
         {
-            //RuleFor(getNoteTaskListByMatrixQuery => getNoteTaskListByMatrixQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteTaskListByMatrixQuery => getNoteTaskListByMatrixQuery.UserId).NotEqual(Guid.Empty);
             RuleFor(getNoteTaskListByMatrixQuery => getNoteTaskListByMatrixQuery.MatrixId).NotNull().IsInEnum();
         }
     }

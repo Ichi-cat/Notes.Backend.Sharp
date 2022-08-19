@@ -7,7 +7,7 @@ namespace Notes.Application.Matrices.Queries.GetMatrixList
     {
         public GetMatrixListQueryValidator()
         {
-            //RuleFor(getMatrixListQuery => getMatrixListQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getMatrixListQuery => getMatrixListQuery.UserId).NotEqual(Guid.Empty);
         }
     }
 }

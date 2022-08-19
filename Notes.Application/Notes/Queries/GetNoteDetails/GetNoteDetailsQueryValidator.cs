@@ -12,7 +12,7 @@ namespace Notes.Application.Notes.Queries.GetNoteDetails
         public GetNoteDetailsQueryValidator()
         {
             RuleFor(getNoteDetailsQuery => getNoteDetailsQuery.Id).NotEqual(Guid.Empty);
-            //RuleFor(getNoteDetailsQuery => getNoteDetailsQuery.UserId).NotEqual(Guid.Empty);
+            RuleFor(getNoteDetailsQuery => getNoteDetailsQuery.UserId).NotEqual(Guid.Empty);
         }
     }
 }

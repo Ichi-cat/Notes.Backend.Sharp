@@ -104,7 +104,7 @@ namespace Notes.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpPatch("{id}")]
-        public async Task<ActionResult> UpdateNoteTaskPatch(JsonPatchDocument<Note> model, Guid id)
+        public async Task<ActionResult> UpdateNotePatch(JsonPatchDocument<Note> model, Guid id)
         {
             var command = new UpdateNotePatchCommand
             {

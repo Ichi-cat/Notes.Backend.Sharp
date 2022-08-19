@@ -3,9 +3,9 @@ using System;
 
 namespace Notes.Application.Notes.Commands.UpdateNotePatch
 {
-    public class UpdateNpteCommandValidator : AbstractValidator<UpdateNotePatchCommand>
+    public class UpdateNotePatchCommandValidator : AbstractValidator<UpdateNotePatchCommand>
     {
-        public UpdateNpteCommandValidator()
+        public UpdateNotePatchCommandValidator()
         {
             RuleFor(updateNoteCommand => updateNoteCommand.Id).NotEqual(Guid.Empty);
             RuleFor(updateNoteCommand => updateNoteCommand.UserId).NotEqual(Guid.Empty);

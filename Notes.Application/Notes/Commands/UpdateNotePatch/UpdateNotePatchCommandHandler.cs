@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Notes.Application.Notes.Commands.UpdateNotePatch
 {
-    public class UpdateNoteCommandHandler : IRequestHandler<UpdateNotePatchCommand>
+    public class UpdateNotePatchCommandHandler : IRequestHandler<UpdateNotePatchCommand>
     {
         private readonly INotesDbContext _context;
 
-        public UpdateNoteCommandHandler(INotesDbContext context)
+        public UpdateNotePatchCommandHandler(INotesDbContext context)
         {
             _context = context;
         }
